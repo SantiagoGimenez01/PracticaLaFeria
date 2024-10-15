@@ -1,52 +1,44 @@
 object julieta{
   var cansancio = 0
-  const fuerza = 80 - cansancio
-  const property punteria = 20
   var property tickets = 15
-  method fuerza() = fuerza
+  method fuerza() = 80 - cansancio
+  method punteria() = 20
   method cansancio() = cansancio
   method jugar(juego){
-    cansancio += juego.cansa()
     tickets += juego.otorgarTickets(self)
+    cansancio += juego.cansa()
   }
-  method puedeCanjear(premio) = self.tickets() >= premio.precio() 
+  method puedeCanjear(premio) = tickets >= premio.precio() 
 }
 
 object gerundio {
+  method jugar(juego){}
   method puedeCanjear(premio) = true
 }
 
 
 object tiroAlBlanco{
-  const cansa = 3
 
-  method cansa() = cansa
+  method cansa() = 3
 
-  method otorgarTickets(jugador) = if(jugador.punteria() % 10 == 0) return jugador.punteria().div(10) else return jugador.punteria().div(10) + 1
+  method otorgarTickets(jugador) = jugador.punteria().div(10).roundUp()
 }
 
 object pruebaDeFuerza {
-  const cansa = 8
+  method cansa() = 8
 
-  method cansa() = cansa
-
-  method otorgarTickets(jugador) = if(jugador.fuerza() >= 75) return 20 else return 0
+  method otorgarTickets(jugador) = if(jugador.fuerza() >= 75) 20 else 0
 }
 
 object ruedaDeLaFortuna {
-  const cansa = 1
-
-  const ruleta = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-
-  method cansa() = cansa
-
-  method otorgarTickets(jugador) = ruleta.anyOne()
+  var property estaAceitada = false
+  method cansa() = if (estaAceitada) 0 else 1
+  method otorgarTickets(jugador) = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].anyOne()
 
 }
 
 object ositoDePeluche{
-  const precio = 45
-  method precio() = precio
+  method precio() = 45
 }
 
 object taladroRotopercutor{

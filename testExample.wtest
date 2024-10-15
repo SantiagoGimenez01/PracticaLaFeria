@@ -30,14 +30,21 @@ describe "Tests de Julieta y prueba de fuerza" {
 
 describe "Tests de Julieta y rueda de la fortuna" {
 
-  test "Julieta obtiene 20 tickets en el juego" {
+  test "Julieta obtiene un numero entre 1 y 20" {
     julieta.jugar(ruedaDeLaFortuna)
     assert.that(julieta.tickets() > 15)
   }
 
-  test "Julieta se cansa 8 unidades en el juego"{
+  test "Julieta se cansa 1 unidad si la rueda no esta aceitada"{
+    ruedaDeLaFortuna.estaAceitada(false)
     julieta.jugar(ruedaDeLaFortuna)
     assert.equals(1, julieta.cansancio())
+  }
+  
+  test "Julieta no se cansa si la rueda esta aceitada"{
+    ruedaDeLaFortuna.estaAceitada(true)
+    julieta.jugar(ruedaDeLaFortuna)
+    assert.equals(0, julieta.cansancio())
   }
 
 }
@@ -48,6 +55,8 @@ describe "Test de julieta y el canje de premios" {
   test "Julieta puede canjear el osito luego de jugar un par de juegos" {
     julieta.jugar(tiroAlBlanco)
     julieta.jugar(pruebaDeFuerza)
+    julieta.jugar(tiroAlBlanco)
+    julieta.jugar(ruedaDeLaFortuna)
     julieta.jugar(tiroAlBlanco)
     julieta.jugar(ruedaDeLaFortuna)
     julieta.jugar(tiroAlBlanco)
