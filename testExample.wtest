@@ -43,20 +43,16 @@ describe "Tests de Julieta y rueda de la fortuna" {
 }
 
 
-describe "Test de julieta y el osito de peluche" {
+describe "Test de julieta y el canje de premios" {
 
-  test "Julieta puede comprar el osito luego de jugar un par de juegos" {
+  test "Julieta puede canjear el osito luego de jugar un par de juegos" {
     julieta.jugar(tiroAlBlanco)
     julieta.jugar(pruebaDeFuerza)
     julieta.jugar(tiroAlBlanco)
     julieta.jugar(ruedaDeLaFortuna)
     julieta.jugar(tiroAlBlanco)
-    assert.that(julieta.puedeComprar(ositoDePeluche))
+    assert.that(julieta.puedeCanjear(ositoDePeluche))
   }
-
-}
-
-describe "Tests de Julieta y el taladro rotopercutor" {
 
   test "Julieta no tiene suficientes tickets para comprar el taladro" {
     julieta.jugar(tiroAlBlanco)
@@ -64,7 +60,17 @@ describe "Tests de Julieta y el taladro rotopercutor" {
     julieta.jugar(tiroAlBlanco)
     julieta.jugar(ruedaDeLaFortuna)
     julieta.jugar(tiroAlBlanco)
-    assert.notThat(julieta.puedeComprar(taladroRotopercutor))
+    assert.notThat(julieta.puedeCanjear(taladroRotopercutor))
   }
 
+}
+
+describe "Gerundio puede canjear cualquier premio" {
+  test "Gerundio puede canjear el osito de peluche sin tener que jugar ningun juego" {
+    assert.that(gerundio.puedeCanjear(ositoDePeluche))
+  }
+
+  test "Gerundio puede canjear el taladro rotopercutor sin tener que jugar ningun juego" {
+    assert.that(gerundio.puedeCanjear(taladroRotopercutor))
+  }
 }

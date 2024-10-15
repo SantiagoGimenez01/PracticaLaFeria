@@ -9,9 +9,13 @@ object julieta{
     cansancio += juego.cansa()
     tickets += juego.otorgarTickets(self)
   }
-  method puedeComprar(premio) = self.tickets() >= premio.precio() 
-
+  method puedeCanjear(premio) = self.tickets() >= premio.precio() 
 }
+
+object gerundio {
+  method puedeCanjear(premio) = true
+}
+
 
 object tiroAlBlanco{
   const cansa = 3
