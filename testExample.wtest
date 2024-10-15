@@ -1,15 +1,44 @@
 import example.*
 
-describe "Tests" {
+describe "Tests de Julieta y tiro al blanco" {
 
-  test "Julieta obtiene 2 tickets en el juego Tiro al blanco" {
+  test "Julieta obtiene 2 tickets en el juego" {
     julieta.jugar(tiroAlBlanco)
     assert.equals(17, julieta.tickets())
   }
 
-  test "Julieta se cansa 3 unidades en el juego de Tiro al blanco"{
+  test "Julieta se cansa 3 unidades en el juego"{
     julieta.jugar(tiroAlBlanco)
     assert.equals(3, julieta.cansancio())
   }
 
 }
+
+describe "Tests de Julieta y prueba de fuerza" {
+
+  test "Julieta obtiene 20 tickets en el juego" {
+    julieta.jugar(pruebaDeFuerza)
+    assert.equals(35, julieta.tickets())
+  }
+
+  test "Julieta se cansa 8 unidades en el juego"{
+    julieta.jugar(pruebaDeFuerza)
+    assert.equals(8, julieta.cansancio())
+  }
+
+}
+
+describe "Tests de Julieta y rueda de la fortuna" {
+
+  test "Julieta obtiene 20 tickets en el juego" {
+    julieta.jugar(ruedaDeLaFortuna)
+    assert.that(julieta.tickets() > 15)
+  }
+
+  test "Julieta se cansa 8 unidades en el juego"{
+    julieta.jugar(ruedaDeLaFortuna)
+    assert.equals(1, julieta.cansancio())
+  }
+
+}
+
