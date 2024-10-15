@@ -9,6 +9,7 @@ object julieta{
     cansancio += juego.cansa()
     tickets += juego.otorgarTickets(self)
   }
+  method puedeComprar(premio) = self.tickets() >= premio.precio() 
 
 }
 
@@ -37,5 +38,14 @@ object ruedaDeLaFortuna {
 
   method otorgarTickets(jugador) = ruleta.anyOne()
 
+}
+
+object ositoDePeluche{
+  const precio = 45
+  method precio() = precio
+}
+
+object taladroRotopercutor{
+  var property precio = 1000
 }
 
